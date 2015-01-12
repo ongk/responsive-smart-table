@@ -1,0 +1,251 @@
+.responsive-wrapper {
+  position: relative;
+}
+
+.responsive-scrollable {
+  overflow-x: auto;
+
+  .scrollbar-spacer {
+    height: 35px;
+  }
+}
+
+.narrow-table {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  text-align: left;
+  width: 100%;
+
+  .actions-header th {
+    padding: 10px;
+    text-align: right;
+
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+
+      .input-group {
+        input, span {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  th {
+    background-color: #ffffff;
+    box-sizing: content-box;
+    padding: $table-cell-padding;
+    white-space: nowrap;
+  }
+
+  tbody {
+
+    .row-selected {
+      background-color: #edf6fc;
+    }
+
+    tr {
+      background-color: #ffffff;
+
+      &:hover td {
+        background: #edf6fc;
+      }
+
+      td {
+        box-sizing: content-box;
+        height: 26px;
+        border-top: 1px solid $table-border-color;
+        border-bottom: 1px solid $table-border-color;
+        padding: $table-cell-padding;
+        white-space: nowrap;
+
+        &:first-child {
+          border-left: 1px solid $table-border-color;
+        }
+
+        &:last-child {
+          border-right: 1px solid $table-border-color;
+        }
+
+        &.reorder {
+          position: relative;
+          border-right: 1px solid $table-border-color;
+          padding-right: 22px;
+
+          &:after {
+            width: 15px;
+            content: '\f0dc';
+            font-family: 'FontAwesome';
+            position: absolute;
+            right: 0;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  tfoot td {
+    padding: $table-footer-topspace 5px 5px 5px;
+  }
+}
+
+.expand-table {
+  border-spacing: 0;
+
+  tbody {
+
+    .summary-only td:first-child,
+    .multi-select-col + td {
+      box-sizing: content-box;
+      padding: 2px 0 0 4px;
+      min-width: 15px;
+      max-width: 15px;
+      width: 15px;
+      text-align: center;
+      line-height: 14px;
+    }
+
+    tr:nth-child(3n+2) {
+      display: none;
+
+      &.expanded {
+        display: table-row;
+
+        td {
+          background: #ffffff;
+          white-space: normal;
+        }
+      }
+
+      td {
+        height: inherit;
+        border-top: none;
+        padding: $table-cell-padding 20px;
+      }
+    }
+
+    tr:nth-child(3n) td {
+      height: 4px;
+      border: none;
+      padding: 0;
+      background: #ffffff;
+    }
+
+    tr:last-child {
+      display: none;
+    }
+  }
+
+  .fa-chevron-right, .fa-chevron-down {
+    cursor: pointer;
+  }
+}
+
+.actions-header {
+  height: 60px;
+
+  th:last-child {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.select-table {
+
+  .multi-select-col {
+    box-sizing: content-box;
+    line-height: 12px;
+    text-align: center;
+
+    & + td {
+      border-left: 1px solid $table-border-color;
+    }
+
+    input[type=checkbox] {
+      margin: 0;
+    }
+  }
+
+  tbody tr td:first-child {
+    max-width: 30px;
+    min-width: 30px;
+    padding: 2px 0;
+    width: 30px;
+  }
+}
+
+.action-table {
+
+  tbody tr td {
+
+    &:last-child {
+      background-color: #ffffff;
+      border-left: 1px solid $table-border-color;
+      cursor: default;
+      text-align: center;
+
+      .btn-xs {
+        padding: 3px 6px;
+      }
+    }
+  }
+
+  &.expand-table tbody tr {
+
+    &:nth-child(3n) {
+      height: 4px;
+
+      td:last-child {
+        border-left: none;
+      }
+    }
+
+    &:nth-child(3n+1) td:last-child {
+      background-color: #ffffff;
+      border-left: 1px solid $table-border-color;
+    }
+
+    &:nth-child(3n+2) td:last-child {
+      display: none;
+    }
+  }
+
+  th:last-child, td:last-child {
+    position: absolute;
+    right: 0;
+  }
+
+  tfoot td:last-child {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+  }
+}
+
+.select-table, .action-table {
+
+  .actions-header th:last-child {
+    padding: 10px 0;
+  }
+}
+
+[lr-drag-src] td:not(.multi-select-col) {
+  cursor: move;
+}
+
+.lr-drop-target-before td {
+  border-top: 2px solid #1f83c6 !important;
+}
+
+.lr-drop-target-after td {
+  border-bottom: 2px solid #1f83c6 !important;
+}
+
+

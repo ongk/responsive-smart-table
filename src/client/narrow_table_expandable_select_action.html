@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="content/styles.css" rel="stylesheet"/>
+  <script src="../../bower_components/angular/angular.min.js"></script>
+  <script src="../../bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+  <script src="../../third_party_libs/lrDragNDrop.js"></script>
+  <script src="app/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+  <div class="wrapper" style="padding: 10px;">
+    <div class="responsive-wrapper">
+      <div class="responsive-scrollable">
+        <table st-table="rowCollection" responsive-smart-table class="narrow-table expand-table select-table action-table">
+          <thead>
+            <tr class="actions-header">
+              <th colspan="10">
+                <div class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Filter">
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">Create</button>
+                  <button class="btn btn-primary"><i class="fa fa-cloud-upload"></i> Launch Instance</button>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th class="multi-select-col"><input type="checkbox"/></th>
+              <th></th>
+              <th>Name</th>
+              <th>VCPUs</th>
+              <th>RAM</th>
+              <th>Total Disk</th>
+              <th>Root Disk</th>
+              <th>Ephemeral Disk</th>
+              <th>Public</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat-start="row in rowCollection" lr-drag-src="reorder" lr-drop-target="reorder">
+              <td class="multi-select-col"><input type="checkbox"/></td>
+              <td><i class="fa fa-chevron-right" rst-expandable></i></td>
+              <td class="reorder">{{ row.name }}</td>
+              <td>{{ row.vcpus }}</td>
+              <td>{{ row.ram }}</td>
+              <td>{{ row.totalDisk }}</td>
+              <td>{{ row.rootDisk }}</td>
+              <td>{{ row.ephemeralDisk }}</td>
+              <td>{{ row.isPublic }}</td>
+              <td><button type="button" class="btn btn-default btn-xs">Launch Instance</button></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="8">
+                <h5>{{ row.name }}</h5>
+                <p>
+                Lorem ipsum dolor sit amet, amet pellentesque nulla, pede leo aliquam a ipsum gravida tortor, donec ante lorem mauris. Sit sed et, scelerisque ipsum et sed vitae conubia quam, eget tellus dolor eget rhoncus scelerisque, neque risus volutpat tincidunt mauris semper lectus. Id massa etiam odio, porttitor sit lorem eget, vestibulum sed at purus est, arcu nullam nec cum. Ut sodales quis phasellus fusce, nibh donec amet lacus aliquet enim mauris, amet in arcu est sed. Eros odio neque suscipit orci tincidunt est. Feugiat fermentum dolor viverra egestas eu. Id posuere mi sem. Ligula magna felis natoque libero, in neque ut dignissim, integer suscipit. Aliquam nullam ultricies nam risus luctus, dui non ligula eu urna, in in lacus convallis. Vel amet aenean a diam erat turpis, tellus tincidunt suspendisse ac. Diam volutpat cum et ut, eu vestibulum diam, tempus amet dictum lobortis adipisicing maecenas, in aenean suscipit sit feugiat egestas.
+                </p>
+              </td>
+              <td></td>
+            </tr>
+            <tr ng-repeat-end>
+              <td colspan="10"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6">Displaying 3 items</td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="scrollbar-spacer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

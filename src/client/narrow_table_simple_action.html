@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="content/styles.css" rel="stylesheet"/>
+  <script src="../../bower_components/angular/angular.min.js"></script>
+  <script src="../../bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+  <script src="../../third_party_libs/lrDragNDrop.js"></script>
+  <script src="app/app.js"></script>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+  <div class="wrapper" style="padding: 10px;">
+    <div class="responsive-wrapper">
+      <div class="responsive-scrollable">
+        <table st-table="rowCollection" responsive-smart-table class="narrow-table action-table">
+          <thead>
+            <tr class="actions-header">
+              <th colspan="8">
+                <div class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Filter">
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">Create</button>
+                  <button class="btn btn-primary"><i class="fa fa-cloud-upload"></i> Launch Instance</button>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>VCPUs</th>
+              <th>RAM</th>
+              <th>Total Disk</th>
+              <th>Root Disk</th>
+              <th>Ephemeral Disk</th>
+              <th>Public</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in rowCollection">
+              <td>{{ row.name }}</td>
+              <td>{{ row.vcpus }}</td>
+              <td>{{ row.ram }}</td>
+              <td>{{ row.totalDisk }}</td>
+              <td>{{ row.rootDisk }}</td>
+              <td>{{ row.ephemeralDisk }}</td>
+              <td>{{ row.isPublic }}</td>
+              <td><button type="button" class="btn btn-default btn-xs">Launch Instance</button></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="8">
+                Displaying 3 items
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="scrollbar-spacer"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.responsive-wrapper {
+  position: relative; }
+
+.responsive-scrollable {
+  overflow-x: auto; }
+  .responsive-scrollable .scrollbar-spacer {
+    height: 35px; }
+
+.narrow-table {
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  text-align: left;
+  width: 100%; }
+  .narrow-table .actions-header th {
+    padding: 10px;
+    text-align: right; }
+    .narrow-table .actions-header th .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle; }
+      .narrow-table .actions-header th .form-group .input-group input, .narrow-table .actions-header th .form-group .input-group span {
+        width: auto; }
+  .narrow-table th {
+    background-color: #ffffff;
+    box-sizing: content-box;
+    padding: 8px;
+    white-space: nowrap; }
+  .narrow-table tbody .row-selected {
+    background-color: #edf6fc; }
+  .narrow-table tbody tr {
+    background-color: #ffffff; }
+    .narrow-table tbody tr:hover td {
+      background: #edf6fc; }
+    .narrow-table tbody tr td {
+      box-sizing: content-box;
+      height: 26px;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
+      padding: 8px;
+      white-space: nowrap; }
+      .narrow-table tbody tr td:first-child {
+        border-left: 1px solid #cccccc; }
+      .narrow-table tbody tr td:last-child {
+        border-right: 1px solid #cccccc; }
+      .narrow-table tbody tr td.reorder {
+        position: relative;
+        border-right: 1px solid #cccccc;
+        padding-right: 22px; }
+        .narrow-table tbody tr td.reorder:after {
+          width: 15px;
+          content: '\f0dc';
+          font-family: 'FontAwesome';
+          position: absolute;
+          right: 0;
+          display: inline-block; }
+  .narrow-table tfoot td {
+    padding: 10px 5px 5px 5px; }
+
+.expand-table {
+  border-spacing: 0; }
+  .expand-table tbody .summary-only td:first-child,
+  .expand-table tbody .multi-select-col + td {
+    box-sizing: content-box;
+    padding: 2px 0 0 4px;
+    min-width: 15px;
+    max-width: 15px;
+    width: 15px;
+    text-align: center;
+    line-height: 14px; }
+  .expand-table tbody tr:nth-child(3n+2) {
+    display: none; }
+    .expand-table tbody tr:nth-child(3n+2).expanded {
+      display: table-row; }
+      .expand-table tbody tr:nth-child(3n+2).expanded td {
+        background: #ffffff;
+        white-space: normal; }
+    .expand-table tbody tr:nth-child(3n+2) td {
+      height: inherit;
+      border-top: none;
+      padding: 8px 20px; }
+  .expand-table tbody tr:nth-child(3n) td {
+    height: 4px;
+    border: none;
+    padding: 0;
+    background: #ffffff; }
+  .expand-table tbody tr:last-child {
+    display: none; }
+  .expand-table .fa-chevron-right, .expand-table .fa-chevron-down {
+    cursor: pointer; }
+
+.actions-header {
+  height: 60px; }
+  .actions-header th:last-child {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0; }
+
+.select-table .multi-select-col {
+  box-sizing: content-box;
+  line-height: 12px;
+  text-align: center; }
+  .select-table .multi-select-col + td {
+    border-left: 1px solid #cccccc; }
+  .select-table .multi-select-col input[type=checkbox] {
+    margin: 0; }
+.select-table tbody tr td:first-child {
+  max-width: 30px;
+  min-width: 30px;
+  padding: 2px 0;
+  width: 30px; }
+
+.action-table tbody tr td:last-child {
+  background-color: #ffffff;
+  border-left: 1px solid #cccccc;
+  cursor: default;
+  text-align: center; }
+  .action-table tbody tr td:last-child .btn-xs {
+    padding: 3px 6px; }
+.action-table.expand-table tbody tr:nth-child(3n) {
+  height: 4px; }
+  .action-table.expand-table tbody tr:nth-child(3n) td:last-child {
+    border-left: none; }
+.action-table.expand-table tbody tr:nth-child(3n+1) td:last-child {
+  background-color: #ffffff;
+  border-left: 1px solid #cccccc; }
+.action-table.expand-table tbody tr:nth-child(3n+2) td:last-child {
+  display: none; }
+.action-table th:last-child, .action-table td:last-child {
+  position: absolute;
+  right: 0; }
+.action-table tfoot td:last-child {
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%; }
+
+.select-table .actions-header th:last-child, .action-table .actions-header th:last-child {
+  padding: 10px 0; }
+
+[lr-drag-src] td:not(.multi-select-col) {
+  cursor: move; }
+
+.lr-drop-target-before td {
+  border-top: 2px solid #1f83c6 !important; }
+
+.lr-drop-target-after td {
+  border-bottom: 2px solid #1f83c6 !important; }
+
+/*# sourceMappingURL=styles.css.map */
