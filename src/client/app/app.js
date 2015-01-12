@@ -18,7 +18,7 @@
 
   app.directive('responsiveSmartTable', [ '$window', '$timeout', function($window, $timeout) {
 
-    function linker(scope, element, attrs) {
+    function link(scope, element, attrs) {
 
       function initTable() {
         scope.lastWidth = $window.innerWidth;
