@@ -18,7 +18,25 @@
 
   app.directive('responsiveSmartTable', [ '$window', '$timeout', function($window, $timeout) {
 
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
     function link(scope, element, attrs) {
+
+      angular.element($window).bind('resize', function() {
+        resizeTableHeights();
+        scope.$apply();
+      });
+
+      scope.$on('$destroy', function() {
+        angular.element($window).off('resize', resizeTableHeights);
+      });
+
+      $timeout(initTable, 0);
 
       function initTable() {
         scope.lastWidth = $window.innerWidth;
@@ -56,30 +74,20 @@
           }
         }
       }
-
-      angular.element($window).bind('resize', function() {
-        resizeTableHeights();
-        scope.$apply();
-      });
-
-      scope.$on('$destory', function() {
-        angular.element($window).off('resize', resizeTableHeights);
-      });
-
-      $timeout(initTable, 0);
-
-    }
-
-    return {
-      restrict: 'A',
-      link: link
     }
 
   }]);
 
   app.directive('rstExpandable', function() {
 
-    var link = function(scope, element) {
+    var directive = {
+      restrict: 'A',
+      link: link
+    };
+
+    return directive;
+
+    function link(scope, element) {
 
       element.on('click', function() {
 
@@ -102,12 +110,6 @@
           }
         }
       });
-
-    };
-
-    return {
-      restrict: 'A',
-      link: link
     }
 
   });
