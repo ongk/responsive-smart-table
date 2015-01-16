@@ -1,17 +1,6 @@
 (function() {
   'use strict';
 
-  function MainCtrl($scope) {
-    $scope.rowCollection = [
-        { name: 'm1.nano', vcpus: '2', ram: '64 MB', totalDisk: '0 GB', rootDisk: '0 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
-        { name: 'm1.small', vcpus: '1', ram: '2048 MB', totalDisk: '20 GB', rootDisk: '20 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
-        { name: 'm1.medium', vcpus: '1', ram: '4096 MB', totalDisk: '40 GB', rootDisk: '40 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
-        { name: 'm1.nano', vcpus: '2', ram: '64 MB', totalDisk: '0 GB', rootDisk: '0 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
-        { name: 'm1.small', vcpus: '1', ram: '2048 MB', totalDisk: '20 GB', rootDisk: '20 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
-        { name: 'm1.medium', vcpus: '1', ram: '4096 MB', totalDisk: '40 GB', rootDisk: '40 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' }
-    ];
-  };
-
   var app = angular.module('app', [ 'smart-table', 'lrDragNDrop' ]);
 
   app.factory('DOMUtilService', function($rootScope) {
@@ -72,6 +61,22 @@
 
   });
 
+  function MainCtrl($scope) {
+    $scope.rowCollection = [
+        { name: 'm1.nano', vcpus: '2', ram: '64 MB', totalDisk: '0 GB', rootDisk: '0 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
+        { name: 'm1.small', vcpus: '1', ram: '2048 MB', totalDisk: '20 GB', rootDisk: '20 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
+        { name: 'm1.medium', vcpus: '1', ram: '4096 MB', totalDisk: '40 GB', rootDisk: '40 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
+        { name: 'm1.nano', vcpus: '2', ram: '64 MB', totalDisk: '0 GB', rootDisk: '0 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
+        { name: 'm1.small', vcpus: '1', ram: '2048 MB', totalDisk: '20 GB', rootDisk: '20 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' },
+        { name: 'm1.medium', vcpus: '1', ram: '4096 MB', totalDisk: '40 GB', rootDisk: '40 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' }
+    ];
+
+    $scope.addRow = function() {
+      var large = { name: 'm1.large', vcpus: '1', ram: '4096 MB', totalDisk: '40 GB', rootDisk: '40 GB', ephemeralDisk: '0 GB', isPublic: 'Yes' };
+      $scope.rowCollection.push(large);
+    }
+  };
+
   app.controller('MainCtrl', [ '$scope', MainCtrl ]);
 
   app.directive('responsiveSmartTable', [ '$window', '$timeout', 'DOMUtilService', function($window, $timeout, DOMUtilService) {
@@ -90,8 +95,11 @@
         scope.$apply();
       });
 
+      var dataUnwatch = scope.$watch(attrs.stTable, initTable, true);
+
       scope.$on('$destroy', function() {
         angular.element($window).off('resize', resizeTableHeights);
+        dataUnwatch();
       });
 
       $timeout(initTable, 0);
